@@ -33,6 +33,14 @@ Capybara.javascript_driver = :selenium
   require support_file
 end
 
+# Requires supporting files with custom matchers and macros, etc,
+# in ./spec/factories/
+([Rails.root.to_s] | ::Refinery::Plugins.registered.pathnames).map{|p|
+  Dir[File.join(p, 'spec', 'factories', '*.rb').to_s]
+}.flatten.sort.each do |support_file|
+  require support_file
+end
+
 # This is a temporary hack to get around some hackery with Devise when
 # using the authentication macros in request specs that are defined in
 # refinerycms-testing. If you remove this line ensure that tests pass
