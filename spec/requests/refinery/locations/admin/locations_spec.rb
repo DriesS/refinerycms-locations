@@ -9,8 +9,8 @@ describe Refinery do
 
         describe "locations list" do
           before do
-            FactoryGirl.create(:location, :name => "UniqueTitleOne")
-            FactoryGirl.create(:location, :name => "UniqueTitleTwo")
+            Refinery::Locations::Location.make!(:name => "UniqueTitleOne")
+            Refinery::Locations::Location.make!(:name => "UniqueTitleTwo")
           end
 
           it "shows two items" do
@@ -65,7 +65,7 @@ describe Refinery do
         end
 
         describe "edit" do
-          before { FactoryGirl.create(:location, :name => "A name") }
+          before { Refinery::Locations::Location.make!(:name => "A name") }
 
           it "should succeed" do
             visit refinery.locations_admin_locations_path
@@ -83,7 +83,7 @@ describe Refinery do
         end
 
         describe "destroy" do
-          before { FactoryGirl.create(:location, :name => "UniqueTitleOne") }
+          before { Refinery::Locations::Location.make!(:name => "UniqueTitleOne") }
 
           it "should succeed" do
             visit refinery.locations_admin_locations_path
