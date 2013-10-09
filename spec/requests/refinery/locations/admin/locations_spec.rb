@@ -24,41 +24,47 @@ describe Refinery do
           before do
             visit refinery.locations_admin_locations_path
 
-            click_link "Add New Location"
+            click_link "Create a new Location"
           end
 
           context "valid data" do
             it "should succeed" do
+              locations_quantity = Refinery::Locations::Location.count
+              
               fill_in "Name", :with => "This is a test of the first string field"
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::Locations::Location.count.should == 1
+              Refinery::Locations::Location.count.should == locations_quantity + 1
             end
           end
 
           context "invalid data" do
             it "should fail" do
+              locations_quantity = Refinery::Locations::Location.count
+              
               click_button "Save"
 
               page.should have_content("Name can't be blank")
-              Refinery::Locations::Location.count.should == 0
+              Refinery::Locations::Location.count.should == locations_quantity
             end
           end
 
           context "duplicate" do
-            before { FactoryGirl.create(:location, :name => "UniqueTitle") }
+            before { Refinery::Locations::Location.make!(:name => "UniqueTitle") }
 
             it "should fail" do
+              locations_quantity = Refinery::Locations::Location.count
+              
               visit refinery.locations_admin_locations_path
 
-              click_link "Add New Location"
+              click_link "Create a new Location"
 
               fill_in "Name", :with => "UniqueTitle"
               click_button "Save"
 
               page.should have_content("There were problems")
-              Refinery::Locations::Location.count.should == 1
+              Refinery::Locations::Location.count.should == locations_quantity
             end
           end
 
@@ -86,12 +92,14 @@ describe Refinery do
           before { Refinery::Locations::Location.make!(:name => "UniqueTitleOne") }
 
           it "should succeed" do
+            locations_quantity = Refinery::Locations::Location.count
+            
             visit refinery.locations_admin_locations_path
 
             click_link "Remove this location forever"
 
             page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::Locations::Location.count.should == 0
+            Refinery::Locations::Location.count.should == locations_quantity - 1
           end
         end
 

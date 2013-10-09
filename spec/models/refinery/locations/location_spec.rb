@@ -15,8 +15,8 @@ module Refinery
 
 			describe "on success" do
 				it "should find latitude and longitude given an address" do
-				  @location.latitude.to_f.should be_within(0.00001).of(40.80333)
-				  @location.longitude.to_f.should be_within(0.00001).of(-73.95038)
+				  @location.latitude.to_f.should be_within(0.00001).of(40.803403)
+				  @location.longitude.to_f.should be_within(0.00001).of(-73.950273)
 				end
 			end
 		end
