@@ -72,6 +72,15 @@
                :image => @location.image,
                :toggle_image_display => false %>
   </div>
+  
+  <div class='field'>
+    <%= f.label :menu -%>
+    <%= render '/refinery/admin/resource_picker',
+               :f => f,
+               :field => :menu_id,
+               :resource => @location.menu %>
+
+  </div>
 
 
   <%= render '/refinery/admin/form_actions', :f => f,
