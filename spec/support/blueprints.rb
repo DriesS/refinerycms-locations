@@ -23,8 +23,3 @@ Refinery::Locations::Location.blueprint do
 	jewelry { true }
 	textile { false }
 end
-
-Refinery::Locations::Import.blueprint do
-	filename { "#{Faker::Lorem.words(1)}.csv" }
-	status { 'empty' }
-end

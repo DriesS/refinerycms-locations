@@ -10,7 +10,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = "refinery_locations"
           plugin.url = proc {  '/refinery/locations/locations' }
-          plugin.menu_match = /refinery\/locations\/(locations|imports|regions)/
+          plugin.menu_match = /refinery\/locations\/(locations|regions)/
           plugin.activity = { :class_name => :'refinery/locations/location' }
         end
       end

@@ -13,23 +13,13 @@ en:
             sorry_no_results: Sorry! There are no results found.
             no_items_yet: There are no Locations yet. Click "Create a new Location" to add your first location.
           show:
-            switch: Switch to Imports
-            switch2: Switch to Regions
+            switch: Switch to Regions
           records:
             no_items_yet: There are no Locations yet. Click "Create a new Location" to add your first location.
             no_results: 'Sorry, no results found'
           location:
             edit: Edit this location
             delete: Remove this location forever
-        imports:
-          index:
-            create_new: Create a new Import
-            reorder: Reorder Imports
-            reorder_done: Done Reordering Imports
-            sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Imports yet. Click "Create a new Import" to add your first import.
-          show:
-            switch: Switch to Locations
         regions:
           index:
             create_new: Create a new Region
