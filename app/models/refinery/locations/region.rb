@@ -4,7 +4,7 @@ module Refinery
     class Region < Refinery::Core::BaseModel
 		  self.table_name = 'refinery_regions'
 
-      has_many :locations, :class_name => '::Refinery::Locations::Location'
+      has_many :locations, :class_name => '::Refinery::Locations::Location', :dependent => :destroy
       
       attr_accessible :name
 

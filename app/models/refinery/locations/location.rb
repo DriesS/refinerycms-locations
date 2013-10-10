@@ -4,7 +4,7 @@ module Refinery
 		class Location < ActiveRecord::Base
 		  acts_as_indexed :fields => [:name, :address, :phone, :hours, :longitude, :latitude]
 		  self.table_name = 'refinery_locations'
-		  validates_presence_of :name
+		  validates_presence_of :name, :region_id
 		  validates_uniqueness_of :name
 			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, 
 			 								:website, :phone, :hours, :longitude, :latitude, :online, :position,

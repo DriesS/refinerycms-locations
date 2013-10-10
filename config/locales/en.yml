@@ -48,6 +48,8 @@ en:
           actions:
             reorder: Reorder Regions
             reorder_done: Done Reordering Regions
+          messages:
+            deletion_warning: "WARNING: all locations associated with \nthis region will also be deleted."
       location:
         view_live: View this location live <br/><em>(opens in a new window)</em>
         edit: Edit this location

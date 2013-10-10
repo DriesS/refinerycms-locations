@@ -10,7 +10,7 @@
     <%= link_to refinery_icon_tag("delete.png"), refinery.locations_admin_region_path(region),
         :class => "cancel confirm-delete",
         :title => t('.delete'),
-        :confirm => t('message', :scope => 'refinery.admin.delete', :title => region.name),
+        :confirm => deletion_confirmation_massage(region),
         :method => :delete %>
   </span>
 </li>
