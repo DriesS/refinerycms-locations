@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730202337) do
+ActiveRecord::Schema.define(:version => 20131009222445) do
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130730202337) do
     t.boolean  "textile"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.integer  "region_id"
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|
@@ -118,6 +119,12 @@ ActiveRecord::Schema.define(:version => 20130730202337) do
   add_index "refinery_pages", ["lft"], :name => "index_refinery_pages_on_lft"
   add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
   add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
+
+  create_table "refinery_regions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "refinery_resources", :force => true do |t|
     t.string   "file_mime_type"

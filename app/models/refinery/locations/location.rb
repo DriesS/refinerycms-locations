@@ -8,7 +8,7 @@ module Refinery
 		  validates_uniqueness_of :name
 			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, 
 			 								:website, :phone, :hours, :longitude, :latitude, :online, :position,
-			 								:women, :handbags, :shoes, :eyewear, :jewelry, :textile
+			 								:women, :handbags, :shoes, :eyewear, :jewelry, :textile, :region_id
 
 			geocoded_by :full_street_address
 			after_validation :geocode 
@@ -16,6 +16,8 @@ module Refinery
 
 			scope :online, where(:online => true)
 			scope :physical, where(:online => false)
+			
+			belongs_to :region, :class_name => '::Refinery::Locations::Region'
 			
 			# Aggregate attribute
 			def full_street_address
