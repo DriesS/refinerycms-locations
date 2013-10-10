@@ -11,6 +11,8 @@ module Refinery
       acts_as_indexed :fields => [:name]
 
       validates :name, :presence => true
+      validates :name, :uniqueness => true
+      
       alias_attribute :title, :name
 
     end
