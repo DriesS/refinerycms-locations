@@ -40,13 +40,18 @@
   </div>
   
   <div class='field'>
-    <%= f.label :website -%>
-    <%= f.text_field :website, :class => 'larger widest'  -%>
+    <%= f.label :email -%>
+    <%= f.text_field :email, :class => 'larger widest'  -%>
   </div>
 
    <div class='field'>
     <%= f.label :phone -%>
     <%= f.text_field :phone, :class => 'larger widest'  -%>
+  </div>
+
+   <div class='field'>
+    <%= f.label :fax -%>
+    <%= f.text_field :fax, :class => 'larger widest'  -%>
   </div>
 
    <div class='field'>
@@ -58,36 +63,14 @@
     <%= f.label :latitude -%>
     <%= f.text_field :longitude, :class => 'larger widest'  -%>
   </div>
-
+  
   <div class='field'>
-    <%= f.label :online -%>
-    <%= f.check_box :online, :checked => @location[:online]  -%>
-  </div>
-
-  <div class='field'>
-    <%= f.label :women -%>
-    <%= f.check_box :women, :checked => @location[:women]  -%>
-  </div>
-
-  <div class='field'>
-    <%= f.label :handbags -%>
-    <%= f.check_box :handbags, :checked => @location[:handbags]  -%>
-  </div>
-  <div class='field'>
-    <%= f.label :shoes -%>
-    <%= f.check_box :shoes, :checked => @location[:shoes]  -%>
-  </div>
-  <div class='field'>
-    <%= f.label :eyewear -%>
-    <%= f.check_box :eyewear, :checked => @location[:eyewear]  -%>
-  </div>
-  <div class='field'>
-    <%= f.label :jewelry -%>
-    <%= f.check_box :jewelry, :checked => @location[:jewelry]  -%>
-  </div>
-  <div class='field'>
-    <%= f.label :textile -%>
-    <%= f.check_box :textile, :checked => @location[:textile]  -%>
+    <%= f.label :image -%>
+    <%= render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :image_id,
+               :image => @location.image,
+               :toggle_image_display => false %>
   </div>
 
 

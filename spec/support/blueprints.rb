@@ -13,13 +13,7 @@ Refinery::Locations::Location.blueprint do
 	state_or_province { Faker::Address.state }
 	zip { Faker::Address.zip }
 	country { "USA" }
-	website { Faker::Internet.url }
+	email { Faker::Internet.email }
 	phone { Faker::PhoneNumber.phone_number }
-	online { false }
-	women { false }
-	handbags { true }
-	shoes { true }
-	eyewear { false }
-	jewelry { true }
-	textile { false }
+	fax   { Faker::PhoneNumber.phone_number }
 end
