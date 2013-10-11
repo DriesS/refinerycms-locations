@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.summary       = 'Ruby on Rails Locations engine for Refinery CMS'
   s.require_paths = %w(lib)
   s.files         = Dir['lib/**/*', 'config/**/*', 'app/**/*']
-  s.add_dependency("rubyzip", ["< 1.0.0"])
   s.add_dependency("geocoder")
   s.add_dependency("spreadsheet")
+  s.add_development_dependency("rubyzip", ["< 1.0.0"])  
   s.add_development_dependency("rspec", [">= 0"])
   s.add_development_dependency("autotest-standalone")
   s.add_development_dependency("factory_girl", ["2.6.4"])
