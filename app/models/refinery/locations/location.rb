@@ -6,6 +6,8 @@ module Refinery
 		  self.table_name = 'refinery_locations'
 		  validates_presence_of :name, :region_id
 		  validates_uniqueness_of :name
+		  validates :menu_id, :menu_extension => true
+		  
 			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, :fax, 
 			                :phone, :email, :hours, :longitude, :latitude,  :position, :region_id, 
 			                :image_id, :menu_id
