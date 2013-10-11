@@ -6,7 +6,7 @@ module Refinery
 
       has_many :locations, :class_name => '::Refinery::Locations::Location', :dependent => :destroy
       
-      attr_accessible :name
+      attr_accessible :name, :position
 
       acts_as_indexed :fields => [:name]
 

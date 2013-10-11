@@ -1,7 +1,8 @@
 class CreateRefineryRegions < ActiveRecord::Migration
   def up
     create_table :refinery_regions do |t|
-      t.string :name
+      t.string  :name
+      t.integer :position
       t.timestamps
     end
   end

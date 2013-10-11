@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(:version => 20131010201620) do
     t.string   "country"
     t.string   "phone"
     t.string   "hours"
-    t.float    "longitude",         :limit => 255
-    t.float    "latitude",          :limit => 255
     t.integer  "position"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "region_id"
     t.string   "fax"
     t.string   "email"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20131010201620) do
 
   create_table "refinery_regions", :force => true do |t|
     t.string   "name"
+    t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

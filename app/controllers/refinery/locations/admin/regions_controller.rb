@@ -2,7 +2,8 @@ module Refinery
 	module Locations
 		module Admin
 			class RegionsController < ::Refinery::AdminController
-			  crudify :'refinery/locations/region'
+			  crudify :'refinery/locations/region',
+			          :title_attribute => 'title'
 
 				def create
 				  # if the position field exists, set this object as last object, given the conditions of this class.
