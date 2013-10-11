@@ -2,13 +2,22 @@
   <%= render '/refinery/admin/error_messages',
               :object => @location,
               :include_object_name => true %>
-              
+            
   
   <div class='field'>
-    <%= f.label :region_id %>
-    <%= f.select :region_id, regions.map { |r| [r.name.titleize, r.id] } %>
+    <span>
+      <%= f.label :region_id, "Region" %>  
+    </span>
+    <ul class='checkboxes'>
+      <%- regions.each do |region| -%>
+        <li>
+          <%= f.radio_button :region_id, region.id, :value => region.name.titleize %>
+          <%= f.label "region_id_#{region.id}".to_sym, region.name.titleize, :class => "stripped" %>
+        </li>
+      <%- end -%>      
+    </ul>
   </div>
-  
+    
   <div class='field'>
     <%= f.label :name -%>
     <%= f.text_field :name, :class => 'larger widest'  -%>
