@@ -3,7 +3,6 @@ PATH
   specs:
     refinerycms-locations (0.1.0)
       geocoder
-      rubyzip (< 1.0.0)
       spreadsheet
 
 GEM
@@ -254,4 +253,5 @@ DEPENDENCIES
   refinerycms-locations!
   refinerycms-testing (= 2.0.10)
   rspec
+  rubyzip (< 1.0.0)
   sqlite3

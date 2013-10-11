@@ -19,12 +19,7 @@ Refinery::Core::Engine.routes.append do
           post :update_positions
         end
       end
-    end
-  end
-
-  # Admin routes
-  namespace :locations, :path => '' do
-    namespace :admin, :path => 'refinery/locations' do
+      
       resources :regions, :except => :show do
         collection do
           post :update_positions
@@ -32,5 +27,6 @@ Refinery::Core::Engine.routes.append do
       end
     end
   end
+
 end
 
