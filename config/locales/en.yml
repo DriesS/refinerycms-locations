@@ -20,6 +20,8 @@ en:
           location:
             edit: Edit this location
             delete: Remove this location forever
+          new:
+            no_regions_yet: "There are no Regions yet. You must create a new Region before creating a Location."
         regions:
           index:
             create_new: Create a new Region

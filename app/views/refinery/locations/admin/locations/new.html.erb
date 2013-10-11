@@ -1,1 +1,11 @@
-<%= render 'form' %>
+<div>
+  <%- if regions.any? -%>
+    <%= render 'form' %>
+  <%- else -%>
+    <p>
+      <strong>
+        <%= t('.no_regions_yet') %>
+      </strong>
+    </p>
+  <% end %>
+</div>
