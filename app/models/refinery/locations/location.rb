@@ -34,6 +34,10 @@ module Refinery
 					nil
 				end
 			end
+			
+			def split_hours
+				hours.split(/\s*;\s*/) if hours
+			end
 		end
 	end
 end
