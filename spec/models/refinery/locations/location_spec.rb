@@ -66,5 +66,37 @@ module Refinery
 
 			end
 		end
+		
+		describe Location, "validations" do
+		  context 'name format' do
+		    it "should not accept character '-'" do
+		      location = Location.make(:name => "location-with-invalid-character")
+		      
+		      location.valid?.should be_false
+		      location.errors.full_messages.include?("Name must not contain the character '-'").should be_true
+	      end
+	    end
+	    
+	    context 'name uniqueness' do
+	      it "should not accept duplicated names" do
+	        location_1 = Location.make!
+	        location_2 = Location.make(:name => location_1.name)
+		      
+		      location_2.valid?.should be_false
+          location_2.errors.full_messages.include?("Name has already been taken").should be_true
+	      end
+      end
+	  end
+	  
+	  describe Location, "before_save" do
+      context 'name to downcase format' do
+        it "should apply downcase method on name attribute" do
+          location = Location.make!(:name => "Name Needs To Be Formated")
+          
+          location.name.should == "name needs to be formated"
+        end
+      end
+    end
+	  
 	end
 end
