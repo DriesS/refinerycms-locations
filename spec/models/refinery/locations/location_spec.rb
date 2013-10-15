@@ -97,6 +97,23 @@ module Refinery
         end
       end
     end
+    
+    describe Location, "methods" do
+      before :each do
+        @location = Location.make
+      end
+      
+      describe '#split_hours' do
+        it 'should split hours by line breaks' do
+          @location.hours = "OPEN DAILY 11:00AM - 9:05PM   \r\n  OPEN DAILY 11:00AM - 9:05PM"
+          
+          split_hours = @location.split_hours
+          
+          split_hours.size.should == 2
+          split_hours.should == ['OPEN DAILY 11:00AM - 9:05PM','OPEN DAILY 11:00AM - 9:05PM']
+        end
+      end
+    end
 	  
 	end
 end

@@ -39,7 +39,7 @@ module Refinery
 			end
 			
 			def split_hours
-				hours.split(/\s*;\s*/) if hours
+				hours.split(/\s*\r*\n\s*/) if hours
 			end
 			
 		end
