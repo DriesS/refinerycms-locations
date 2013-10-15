@@ -10,18 +10,20 @@ describe Refinery do
         describe "locations list" do
           before do
             Refinery::Locations::Location.make!(:name => "UniqueTitleOne")
-            Refinery::Locations::Location.make!(:name => "UniqueTitleTwo")
+            Refinery::Locations::Location.make!(:name => "Unique Title Two")
           end
 
           it "shows two items" do
             visit refinery.locations_admin_locations_path
-            page.should have_content("UniqueTitleOne")
-            page.should have_content("UniqueTitleTwo")
+            page.should have_content("uniquetitleone")
+            page.should have_content("unique title two")
           end
         end
 
         describe "create" do
           before do
+            @region = Refinery::Locations::Region.make!
+            
             visit refinery.locations_admin_locations_path
 
             click_link "Create a new Location"
@@ -31,10 +33,11 @@ describe Refinery do
             it "should succeed" do
               locations_quantity = Refinery::Locations::Location.count
               
+              choose "location_region_id_#{@region.id}"              
               fill_in "Name", :with => "This is a test of the first string field"
               click_button "Save"
 
-              page.should have_content("'This is a test of the first string field' was successfully added.")
+              page.should have_content("'this is a test of the first string field' was successfully added.")
               Refinery::Locations::Location.count.should == locations_quantity + 1
             end
           end
@@ -83,7 +86,7 @@ describe Refinery do
             fill_in "Name", :with => "A different name"
             click_button "Save"
 
-            page.should have_content("'A different name' was successfully updated.")
+            page.should have_content("'a different name' was successfully updated.")
             page.should have_no_content("A name")
           end
         end

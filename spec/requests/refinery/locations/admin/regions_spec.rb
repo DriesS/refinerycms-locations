@@ -15,8 +15,8 @@ describe Refinery do
 
           it "shows two items" do
             visit refinery.locations_admin_regions_path
-            page.should have_content("UniqueTitleOne")
-            page.should have_content("UniqueTitleTwo")
+            page.should have_content("uniquetitleone")
+            page.should have_content("uniquetitletwo")
           end
         end
 
@@ -34,7 +34,7 @@ describe Refinery do
               fill_in "Name", :with => "This is a test of the first string field"
               click_button "Save"
         
-              page.should have_content("'This is a test of the first string field' was successfully added.")
+              page.should have_content("'this is a test of the first string field' was successfully added.")
               Refinery::Locations::Region.count.should == 1
             end
           end
@@ -79,7 +79,7 @@ describe Refinery do
             fill_in "Name", :with => "A different region"
             click_button "Save"
         
-            page.should have_content("'A different region' was successfully updated.")            
+            page.should have_content("'a different region' was successfully updated.")            
             # The next spec is not working, but it works when running a real
             # application using this refinrycms-locations gem
             # page.should have_no_content("A region")

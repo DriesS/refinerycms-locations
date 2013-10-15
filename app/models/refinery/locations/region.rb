@@ -10,10 +10,13 @@ module Refinery
 
       acts_as_indexed :fields => [:name]
 
-      validates :name, :presence => true
-      validates :name, :uniqueness => true
+      validates_presence_of   :name
+      validates_uniqueness_of :name, :case_sensitive => false
+      validates_format_of     :name, :with => /^[^.*-.*]+$/, :message => "must not contain the character '-'"
       
       alias_attribute :title, :name
+
+      before_save { |region| region.name = region.name.downcase }
 
     end
   end

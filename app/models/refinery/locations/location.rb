@@ -4,9 +4,12 @@ module Refinery
 		class Location < ActiveRecord::Base
 		  acts_as_indexed :fields => [:name, :address, :phone, :hours, :longitude, :latitude]
 		  self.table_name = 'refinery_locations'
-		  validates_presence_of :name, :region_id
-		  validates_uniqueness_of :name
+		  validates_presence_of   :name, :region_id
+		  validates_uniqueness_of :name, :case_sensitive => false
+		  validates_format_of     :name, :with => /^[^.*-.*]+$/, :message => "must not contain the character '-'"
 		  validates :menu_id, :menu_extension => true
+		  
+		  before_save { |location| location.name = location.name.downcase }
 		  
 			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, :fax, 
 			                :phone, :email, :hours, :longitude, :latitude,  :position, :region_id, 
@@ -38,6 +41,7 @@ module Refinery
 			def split_hours
 				hours.split(/\s*;\s*/) if hours
 			end
+			
 		end
 	end
 end

@@ -4,6 +4,11 @@ module Refinery
   module Locations
   	describe LocationsController do
       describe "GET #index" do
+        before :each do
+          Location.destroy_all
+          @location_1, @location_2 = Location.make!(:name => "location 1"), Location.make!(:name => "location 2")
+        end
+        
         it "responds successfully with an HTTP 200 status code" do
           get :index
           expect(response).to be_success
@@ -11,14 +16,11 @@ module Refinery
         end
 
         it "loads all of the locations into @locations" do
-          Location.destroy_all
-          location_1, location_2 = Location.make!, Location.make!
           get :index
-          expect(assigns(:locations)).to match_array([location_1, location_2])
+          expect(assigns(:locations)).to match_array([@location_1, @location_2])
         end
 
-        it "returns an array of full location objects in json format" do
-          location_1, location_2 = Location.make!, Location.make!
+        it "returns an array of full location objects in json format" do                
           get :index
           expect(response.body.size).to eq(Location.all.to_json.size)
         end
@@ -60,12 +62,12 @@ module Refinery
           describe "on success" do
             it "should return all the stores in a given country" do
               get :search, :country => 'USA'
-              expect(response.body).to eq([@location].to_json)
+              expect(response.body).to eq(Location.near("USA").to_json)
             end
 
             it "should return all the stores in a given state" do
               get :search, :state => 'New York'
-              expect(response.body).to eq([@location].to_json)
+              expect(response.body).to eq(Location.near("New York").to_json)
             end
 
             it "should return all the stores in a given city" do

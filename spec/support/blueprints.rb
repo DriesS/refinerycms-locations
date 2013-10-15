@@ -7,7 +7,7 @@ end
 
 Refinery::Locations::Location.blueprint do 
 	region { Refinery::Locations::Region.make! }
-	name { Faker::Company.name }
+	name { 'location test' }
 	address { Faker::Address.street_address }
 	city { Faker::Address.city }
 	state_or_province { Faker::Address.state }
