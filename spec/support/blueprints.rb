@@ -2,12 +2,12 @@ require 'machinist/active_record'
 require 'faker'
 
 Refinery::Locations::Region.blueprint do
-	name { Faker::Address.city }
+	name { "#{Faker::Address.state}#{sn}" }
 end
 
 Refinery::Locations::Location.blueprint do 
 	region { Refinery::Locations::Region.make! }
-	name { 'location test' }
+	name { "#{Faker::Address.city}#{sn}" }
 	address { Faker::Address.street_address }
 	city { Faker::Address.city }
 	state_or_province { Faker::Address.state }
