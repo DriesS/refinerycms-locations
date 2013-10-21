@@ -18,9 +18,6 @@ Dummy::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # With this cache store, all fetch and read operations will result in a miss
-  config.cache_store = :null_store
-
   # Raise exceptions instead of rendering exception templates
   config.action_dispatch.show_exceptions = false
 
