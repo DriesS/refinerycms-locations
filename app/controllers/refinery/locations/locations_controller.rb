@@ -6,12 +6,12 @@ module Refinery
       before_filter :find_page
 
       def index
-        render json: @locations.as_json(include: [region: {only: [:id, :name]}] )
+        render json: @locations
       end
 
       def show
         @location = Location.find(params[:id])
-        render json: @location.as_json(include: [region: {only: [:id, :name]}] )
+        render json: @location
       end
 
       def search
