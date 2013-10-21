@@ -13,6 +13,7 @@ Refinery::Locations::Location.blueprint do
 	state_or_province { Faker::Address.state }
 	zip { Faker::Address.zip }
 	country { "USA" }
+	address_description { Faker::Lorem.sentence }
 	email { Faker::Internet.email }
 	phone { Faker::PhoneNumber.phone_number }
 	fax   { Faker::PhoneNumber.phone_number }

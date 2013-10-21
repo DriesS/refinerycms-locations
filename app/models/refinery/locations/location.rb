@@ -11,7 +11,7 @@ module Refinery
 		  
 		  before_save { |location| location.name = location.name.downcase }
 		  
-			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, :fax, 
+			attr_accessible :name, :address, :city, :state_or_province, :zip, :country, :address_description, :fax, 
 			                :phone, :email, :hours, :longitude, :latitude,  :position, :region_id, 
 			                :image_id, :menu_id
 
