@@ -17,6 +17,18 @@ module Refinery
       alias_attribute :title, :name
 
       before_save { |region| region.name = region.name.downcase }
+      
+      after_commit :flush_cache
+
+      def self.all_cached
+        Rails.cache.fetch([name, 'all']) { Region.find(:all, :order => :position) }
+      end
+
+    protected
+
+      def flush_cache
+        Rails.cache.delete([self.class.name, 'all'])
+      end
 
     end
   end
