@@ -20,8 +20,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency("factory_girl", ["2.6.4"])
   s.add_development_dependency("factory_girl_rails", ["1.7.0"])
   s.add_development_dependency("sqlite3", [">= 0"])
-  s.add_development_dependency 'refinerycms', '~> 3.0.0'
-  s.add_development_dependency 'refinerycms-testing', '~> 3.0.0'
   s.add_development_dependency("rake", [">= 0"])
   s.add_development_dependency("debugger", [">= 0"])
   s.add_development_dependency('machinist', '>= 2.0.0.beta2')
