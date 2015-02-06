@@ -1,15 +1,23 @@
-User.find(:all).each do |user|
-  user.plugins.create(:name => "refinery_locations",
-                      :position => (user.plugins.maximum(:position) || -1) +1)
+if defined?(::Refinery::User)
+  ::Refinery::User.all.each do |user|
+    if user.plugins.where(:name => 'refinery_locations').blank?
+      user.plugins.create(:name => "refinery_locations", :position => (user.plugins.maximum(:position) || -1) +1)
+    end
+  end
 end
 
-page = Page.create(
-  :title => "Locations",
-  :link_url => "/locations",
-  :deletable => false,
-  :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
-  :menu_match => "^/locations(\/|\/.+?|)$"
-)
-Page.default_parts.each do |default_page_part|
-  page.parts.create(:title => default_page_part, :body => nil)
+url = '/locations'
+
+if defined?(Refinery::Page) and !Refinery::Page.exists?(:link_url => url)
+  page = Refinery::Page.create(
+    :title => "Locations",
+    :link_url => url,
+    :deletable => false,
+    :menu_match => "^#{url}?(\/|\/.+?|)$"
+  )
+
+  Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+    page.parts.create(:title => default_page_part, :body => nil, :position => index)
+  end
 end
+

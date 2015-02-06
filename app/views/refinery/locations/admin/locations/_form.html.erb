@@ -2,11 +2,11 @@
   <%= render '/refinery/admin/error_messages',
               :object => @location,
               :include_object_name => true %>
-            
-  
+
+
   <div class='field'>
     <span>
-      <%= f.label :region_id, "Region" %>  
+      <%= f.label :region_id, "Region" %>
     </span>
     <ul class='checkboxes'>
       <%- regions.each do |region| -%>
@@ -14,10 +14,10 @@
           <%= f.radio_button :region_id, region.id, :value => region.name.titleize %>
           <%= f.label "region_id_#{region.id}".to_sym, region.name.titleize, :class => "stripped" %>
         </li>
-      <%- end -%>      
+      <%- end -%>
     </ul>
   </div>
-    
+
   <div class='field'>
     <%= f.label :name -%>
     <%= f.text_field :name, :class => 'larger widest'  -%>
@@ -27,7 +27,7 @@
     <%= f.label :address -%>
     <%= f.text_field :address, :class => 'larger widest'  -%>
   </div>
-  
+
   <div class='field'>
     <%= f.label :city -%>
     <%= f.text_field :city, :class => 'larger widest'  -%>
@@ -47,15 +47,10 @@
     <%= f.label :country -%>
     <%= f.text_field :country, :class => 'larger widest'  -%>
   </div>
-  
+
    <div class='field'>
     <%= f.label :address_description -%>
     <%= f.text_field :address_description, :class => 'larger widest'  -%>
-  </div>
-  
-  <div class='field'>
-    <%= f.label :email -%>
-    <%= f.text_field :email, :class => 'larger widest'  -%>
   </div>
 
    <div class='field'>
@@ -63,11 +58,6 @@
     <%= f.text_field :phone, :class => 'larger widest'  -%>
   </div>
 
-   <div class='field'>
-    <%= f.label :fax -%>
-    <%= f.text_field :fax, :class => 'larger widest'  -%>
-  </div>
-  
   <div class='field'>
     <%= f.label :image -%>
     <%= render '/refinery/admin/image_picker',
@@ -76,17 +66,9 @@
                :image => @location.image,
                :toggle_image_display => false %>
   </div>
-  
-  <div class='field'>
-    <%= f.label :menu -%>
-    <%= render '/refinery/admin/resource_picker',
-               :f => f,
-               :field => :menu_id,
-               :resource => @location.menu %>
-  </div>
-  
+
    <div class='field'>
-    <%= f.label :hours, "Hours (Use Shift+Enter to create a line break without submitting the form)" -%> 
+    <%= f.label :hours, "Hours (Use Shift+Enter to create a line break without submitting the form)" -%>
     <%= f.text_area :hours, rows: 4, :class => 'larger widest', :style => "font-size: 150%;" -%>
   </div>
 

@@ -1,13 +1,9 @@
-Rails.application.routes.draw do
-  mount Refinery::Core::Engine, :at => "/"
-end
-
 Refinery::Core::Engine.routes.append do
 
   # Frontend routes
   namespace :locations do
-    resources :locations, :path => '', :only => [:index, :show, :search] do 
-      get 'search', :on => :collection 
+    resources :locations, :path => '', :only => [:index, :show, :search] do
+      get 'search', :on => :collection
     end
   end
 
@@ -19,7 +15,7 @@ Refinery::Core::Engine.routes.append do
           post :update_positions
         end
       end
-      
+
       resources :regions, :except => :show do
         collection do
           post :update_positions

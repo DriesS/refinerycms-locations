@@ -6,49 +6,30 @@ module Refinery
       before_filter :find_page
 
       def index
-        render json: @locations
+        # you can use meta fields from your model instead (e.g. browser_title)
+        # by swapping @page for @team in the line below:
+        present(@page)
       end
 
       def show
         @location = Location.find(params[:id])
-        render json: @location
+
+        # you can use meta fields from your model instead (e.g. browser_title)
+        # by swapping @page for @team in the line below:
+        present(@page)
       end
 
-      def search
-        render :json=> {}.to_json and return if params.blank?
-        results = []
-        term = ''
-        
-        if params[:country]
-          term << params[:country]
-        end
-        if params[:state]
-          term << ' ' + params[:state]
-        end
-        if params[:city]
-          term << ' ' + params[:city] 
-        end
-
-        if params[:zip]
-          term = params[:zip]
-        end
-        
-      else
-        results = Refinery::Locations::Location.near(term)  
-
-        render :json=> results
-      end
     protected
 
       def find_all_locations
-        @locations = Refinery::Locations::Location.find(:all, :order => "position ASC")
+        @locations = Location.order('position ASC')
       end
 
       def find_page
-        @page = Page.find_by_link_url("/locations")
+        @page = ::Refinery::Page.where(:link_url => '/locations').first
       end
 
-    end  
+    end
   end
 end
 

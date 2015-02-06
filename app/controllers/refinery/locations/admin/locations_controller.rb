@@ -1,14 +1,19 @@
 module Refinery
-	module Locations
-		module Admin
-			class LocationsController < ::Refinery::AdminController
+  module Locations
+    module Admin
+      class LocationsController < ::Refinery::AdminController
 
-			  crudify :'refinery/locations/location',
-			          :title_attribute => 'title'
+        crudify :'refinery/locations/location',
+                :title_attribute => 'title'
 
-		  end
-		end
-	end		
+        private
+          def location_params
+            params.require(:location).permit!
+          end
+
+      end
+    end
+  end
 end
 
 
