@@ -1,9 +1,13 @@
 require 'geocoder'
 require "geocoder/railtie"
 Geocoder::Railtie.insert
+require 'globalize'
+
+
 module Refinery
   module Locations
     class Location < ActiveRecord::Base
+
       acts_as_indexed :fields => [:name, :address, :phone, :hours, :longitude, :latitude]
       self.table_name = 'refinery_locations'
       validates_presence_of   :name, :region_id
@@ -19,6 +23,8 @@ module Refinery
       belongs_to :region, :class_name => '::Refinery::Locations::Region'
       belongs_to :image,  :class_name => '::Refinery::Image'
       belongs_to :menu,   :class_name => '::Refinery::Resource'
+
+      translates :name, :address, :city, :hours
 
       # Aggregate attribute
       def full_street_address
