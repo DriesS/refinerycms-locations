@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.add_dependency("geocoder")
   s.add_dependency("spreadsheet")
   s.add_dependency 'refinerycms', '~> 3.0.0'
-  s.add_dependency 'globalize',            '~> 4.0.0'
+  s.add_dependency 'globalize',            '~> 5.0.0'
 
   s.add_development_dependency("rubyzip", ["< 1.0.0"])
   s.add_development_dependency("rspec", [">= 0"])
