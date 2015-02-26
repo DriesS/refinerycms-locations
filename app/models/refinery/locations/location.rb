@@ -24,7 +24,7 @@ module Refinery
       belongs_to :image,  :class_name => '::Refinery::Image'
       belongs_to :menu,   :class_name => '::Refinery::Resource'
 
-      translates :name, :address, :city, :hours
+      translates :name, :address, :city, :hours, :state_or_province, :zip, :country, :address_description, :phone, :email
 
       # Aggregate attribute
       def full_street_address
